@@ -2,7 +2,9 @@
 
 A dynamic personal brand website for a YouTube content creator.
 The site automatically displays the latest uploaded videos and shorts using the YouTube RSS feed — no manual updates required.
-You can chech it here : https://tejeshyewale.github.io/vishva-vlogs/
+
+You can chech it here : 
+https://tejeshyewale.github.io/vishva-vlogs/
 ---
 
 ## 🌐 Live Features
@@ -58,7 +60,7 @@ Fallback videos appear if feed fails.
 Open `script.js` and replace:
 
 ```
-const CHANNEL_ID = "YOUR_CHANNEL_ID";
+const CHANNEL_ID = "Vishva Vlogs";
 ```
 
 ---
@@ -68,8 +70,7 @@ const CHANNEL_ID = "YOUR_CHANNEL_ID";
 Open `index.html` and update:
 
 ```
-YouTube Link
-Instagram Link
+https://www.youtube.com/@Vishva_Vlogs
 Email Address
 ```
 
@@ -105,7 +106,7 @@ data-width="75%"
 Your site will be live at:
 
 ```
-https://YOUR-USERNAME.github.io/REPOSITORY-NAME/
+https://tejeshyewale.github.io/vishva-vlogs/
 ```
 
 ---
