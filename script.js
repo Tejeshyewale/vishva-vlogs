@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const increment = target / speed;
 
             const updateCount = () => {
-                constcount = +counter.innerText;
+                const constcount = +counter.innerText;
                 if (constcount < target) {
                     counter.innerText = Math.ceil(constcount + increment);
                     setTimeout(updateCount, 15);
@@ -656,7 +656,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 question.setAttribute('aria-expanded', 'true');
                 answer.setAttribute('aria-hidden', 'false');
             }
-        });
         });
     });
 
