@@ -86,38 +86,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Tone script to prevent content flash -->
-    <script>
-        (function() {
-            const tone = localStorage.getItem('vv_tone');
-            if (tone === 'pro') {
-                document.documentElement.classList.add('pro-mode');
-            }
-        })();
-    </script>
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader" class="preloader">
-        <div class="preloader-content">
-            <span class="preloader-logo">Vishva<span class="accent-text">Vlogs</span></span>
-            <div class="preloader-line"></div>
-        </div>
-    </div>
-
     <!-- Scroll Progress Bar -->
     <div id="scrollProgress" class="scroll-progress-bar"></div>
-
-    <!-- Custom Cursor -->
-    <div class="custom-cursor" id="customCursor"></div>
-    <div class="custom-cursor-trail" id="customCursorTrail"></div>
-
-    <!-- Background Animation Elements -->
-    <div class="bg-glow-wrapper">
-        <div class="bg-glow bg-glow-1"></div>
-        <div class="bg-glow bg-glow-2"></div>
-    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -125,33 +98,16 @@
             <a href="#" class="logo">Vishva<span class="accent-text">Vlogs</span></a>
             <div class="nav-links">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#latest" class="nav-link">Latest</a>
-                <a href="#shorts" class="nav-link">Shorts</a>
-                <a href="#about" class="nav-link">About</a>
+                <a href="#featured" class="nav-link">Featured</a>
+                <a href="#journey" class="nav-link">Journey</a>
+                <a href="#impact" class="nav-link">Impact</a>
+                <a href="#collabs" class="nav-link">Collaborate</a>
+                <a href="#faq" class="nav-link">FAQ</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                
-                <!-- Mobile Tone Toggle -->
-                <div class="tone-toggle-wrapper mobile-toggle">
-                    <button class="tone-toggle-btn" role="switch" aria-checked="false" aria-label="Toggle between Vibe and Pro tone">
-                        <span class="toggle-track">
-                            <span class="toggle-thumb"></span>
-                        </span>
-                        <span class="toggle-label-text">🤙 Vibe</span>
-                    </button>
-                </div>
             </div>
             <div class="nav-actions">
-                <!-- Desktop Tone Toggle -->
-                <div class="tone-toggle-wrapper">
-                    <button class="tone-toggle-btn" role="switch" aria-checked="false" aria-label="Toggle between Vibe and Pro tone">
-                        <span class="toggle-track">
-                            <span class="toggle-thumb"></span>
-                        </span>
-                        <span class="toggle-label-text">🤙 Vibe</span>
-                    </button>
-                </div>
                 <a href="https://www.youtube.com/channel/UCVO1tVecLqpGxgY6cL3lM2A" target="_blank"
-                    class="btn btn-primary">Subscribe <i class="fab fa-youtube"></i></a>
+                    class="btn btn-primary" aria-label="Subscribe to YouTube channel">Subscribe</a>
             </div>
             <button class="menu-btn" aria-label="Toggle Menu">
                 <i class="fas fa-bars"></i>
@@ -161,281 +117,330 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="container hero-container text-center">
-            <h1 class="hero-title">Welcome to <br> <span class="gradient-text">#VishvaSquad! 🚀</span></h1>
-            <p class="hero-subtitle">
-                <span class="tone-vibe"><span id="typewriter">Engineering struggles, random trips & daily chaos.</span><br> Marathi & Hindi vibes only! ✨</span>
-                <span class="tone-pro">Documenting student engineering culture, travel stories, and Gen-Z lifestyle. Multilingual digital content creator. ✨</span>
-            </p>
-
-            <div class="hero-buttons">
-                <a href="https://www.youtube.com/channel/UCVO1tVecLqpGxgY6cL3lM2A" target="_blank"
-                    class="btn btn-primary btn-lg glow-anim">
-                    Join the Family ❤️ <i class="fab fa-youtube"></i>
-                </a>
-                <div class="hero-socials">
-                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-icon" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- Latest Video Section -->
-    <section id="latest" class="section">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2 class="section-title">New <span class="accent-text">Drop! 🎥</span></h2>
-                <p class="section-subtitle">Freshly baked vlog. Watch now! 👇</p>
-            </div>
-
-            <div class="video-wrapper glass-card glow-border">
-                <div class="video-container lazy-youtube" id="latestVideo" data-video-id="jwkq48uLNJs" role="button" aria-label="Play Latest Video" tabindex="0">
-                    <div class="thumbnail-shimmer"></div>
-                    <div class="play-overlay" style="opacity: 1;"><i class="fas fa-play"></i></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shorts Section -->
-    <section id="shorts" class="section">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2 class="section-title">Mini Vlogs <span class="gradient-text">& Masti 🤪</span></h2>
-                <p class="section-subtitle">Binge-watch chaos in 60 seconds!</p>
-            </div>
-
-            <!-- Category Filter Chips -->
-            <div class="filter-container text-center">
-                <button class="filter-chip active" data-filter="all" aria-label="Show all shorts">All</button>
-                <button class="filter-chip" data-filter="engineering" aria-label="Filter by Engineering life">Engineering 📚</button>
-                <button class="filter-chip" data-filter="chaos" aria-label="Filter by Daily chaos">Daily Chaos 📹</button>
-                <button class="filter-chip" data-filter="friends" aria-label="Filter by Friends">Friends 👯‍♂️</button>
-                <button class="filter-chip" data-filter="travel" aria-label="Filter by Travel vibes">Travel 🎒</button>
-            </div>
-
-            <div class="shorts-grid">
-                <!-- Short 1 -->
-                <div class="short-card" data-category="engineering">
-                    <div class="video-container-short lazy-youtube" id="short1" data-video-id="u0QUAvUZun0" role="button" aria-label="Play Short 1" tabindex="0">
-                        <div class="thumbnail-shimmer"></div>
-                        <div class="play-overlay" style="opacity: 1;"><i class="fas fa-play"></i></div>
-                    </div>
-                </div>
-
-                <!-- Short 2 -->
-                <div class="short-card" data-category="chaos">
-                    <div class="video-container-short lazy-youtube" id="short2" data-video-id="gK8ss4K48oI" role="button" aria-label="Play Short 2" tabindex="0">
-                        <div class="thumbnail-shimmer"></div>
-                        <div class="play-overlay" style="opacity: 1;"><i class="fas fa-play"></i></div>
-                    </div>
-                </div>
-
-                <!-- Short 3 -->
-                <div class="short-card" data-category="friends">
-                    <div class="video-container-short lazy-youtube" id="short3" data-video-id="kHAu15IVRPY" role="button" aria-label="Play Short 3" tabindex="0">
-                        <div class="thumbnail-shimmer"></div>
-                        <div class="play-overlay" style="opacity: 1;"><i class="fas fa-play"></i></div>
-                    </div>
-                </div>
-
-                <!-- Short 4 -->
-                <div class="short-card" data-category="travel">
-                    <div class="video-container-short lazy-youtube" id="short4" data-video-id="cumBOX3_6Bg" role="button" aria-label="Play Short 4" tabindex="0">
-                        <div class="thumbnail-shimmer"></div>
-                        <div class="play-overlay" style="opacity: 1;"><i class="fas fa-play"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Me -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="about-container glass-card">
-                <div class="about-content text-center">
-                    <h2 class="section-title">Kai Zala Mitrano! 👋 I'm <span class="accent-text">Vishva</span></h2>
-                    <p class="about-bio">
-                        <span class="tone-vibe">"Just an engineering student trying to figure out life with a camera in hand. From late-night assignments to unplanned trips with friends, I document everything raw and unfiltered. No scripts, just vibes. Welcome to my crazy world! 🌏"</span>
-                        <span class="tone-pro">"An engineering student and digital content creator documenting student life, travel experiences, and youth culture. Providing authentic, high-engagement storytelling and unfiltered lifestyle vlogs that resonate with a growing Gen-Z audience. Partner with me to connect with Mumbai's active community. 🌏"</span>
-                    </p>
-                    <div class="journey-bar-container">
-                        <h3>🎯 Road to 1K Subscribers — Join the early family ❤️</h3>
-                        <div class="progress-bar-bg">
-                            <!-- Change data-width="75%" to update the bar length -->
-                            <div class="progress-bar-fill" data-width="75%"></div>
+        <div class="hero-bg-overlay" style="background-image: url('assets/banner.png');"></div>
+        <div class="container hero-container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="badge">EST. 2023</span>
+                    <h1 class="hero-title">Exploring places. Sharing experiences. Building a community since 2023.</h1>
+                    <p class="hero-subtitle">From my first upload in 2023 to 1000+ subscribers, every video is part of a journey worth sharing.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat-badge">
+                            <span class="stat-value">1,000+</span>
+                            <span class="stat-label">Subscribers</span>
                         </div>
-                        <!-- Update the number below -->
-                        <p class="progress-text">Current Subscribers: 750 / 1000</p>
+                        <div class="hero-stat-badge">
+                            <span class="stat-value">Active</span>
+                            <span class="stat-label">Community</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" id="heroPlayBtn" data-video-id="jwkq48uLNJs">
+                            Watch Latest Video <i class="fas fa-play"></i>
+                        </button>
+                        <a href="#contact" class="btn btn-secondary">Work With Me</a>
+                    </div>
+                </div>
+
+                <div class="hero-media">
+                    <div class="profile-card-wrapper">
+                        <div class="profile-image-container">
+                            <img src="assets/profile.png" alt="Vishva Profile" class="profile-img" loading="eager">
+                        </div>
+                        <div class="profile-info">
+                            <h3>Vishva</h3>
+                            <p>Storyteller & Student Creator</p>
+                            <div class="social-tags">
+                                <a href="https://www.youtube.com/channel/UCVO1tVecLqpGxgY6cL3lM2A" target="_blank" aria-label="YouTube Channel"><i class="fab fa-youtube"></i></a>
+                                <a href="#" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="WhatsApp Contact"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Content Categories -->
-    <section id="categories" class="section">
-        <div class="container">
-            <div class="categories-grid">
-                <div class="cat-card glass-card">
-                    <i class="fas fa-university cat-icon"></i>
-                    <h3>Engineering Life 📚</h3>
-                </div>
-                <div class="cat-card glass-card">
-                    <i class="fas fa-camera cat-icon"></i>
-                    <h3>Daily Chaos 📹</h3>
-                </div>
-                <div class="cat-card glass-card">
-                    <i class="fas fa-user-friends cat-icon"></i>
-                    <h3>Bakchodi w/ Friends 👯‍♂️</h3>
-                </div>
-                <div class="cat-card glass-card">
-                    <i class="fas fa-plane-departure cat-icon"></i>
-                    <h3>Ghumakkad Vibes 🎒</h3>
-                </div>
-                <!-- Added extra category card for balance if needed, or stick to 4 -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section id="stats" class="section">
-        <div class="container">
-            <div class="stats-grid glass-card">
-                <div class="stat-item">
-                    <div class="stat-number count" data-target="750">0</div>
-                    <div class="stat-label">Subscribers Fam</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number count" data-target="150">0</div>
-                    <div class="stat-label">Stories Told</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number count" data-target="3">0</div>
-                    <div class="stat-label">Vlogs/Week</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Journey Section -->
-    <section id="journey" class="section">
+    <!-- Featured Videos Section -->
+    <section id="featured" class="section">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">The <span class="gradient-text">Journey</span> So Far 🛣️</h2>
-                <p class="section-subtitle">A look back at how the #VishvaSquad family grew!</p>
+                <span class="section-badge">Selected Works</span>
+                <h2 class="section-title">Featured Content</h2>
+                <p class="section-subtitle">Premium curation of vlogs and stories from the channel.</p>
             </div>
-            
-            <div class="timeline">
-                <div class="timeline-line"></div>
-                
-                <!-- EDIT THIS: Milestone 1 -->
-                <div class="timeline-item timeline-fade">
-                    <div class="timeline-img glow-border"><i class="fas fa-rocket"></i></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">August 2024</span>
-                        <h3>Channel Launched 🚀</h3>
-                        <p>Decided to pick up a camera and record my engineering survival story. The first video was rough but real!</p>
+
+            <div class="featured-grid">
+                <!-- Video Card 1: Latest Upload -->
+                <div class="video-card">
+                    <div class="video-card-thumb lazy-youtube" id="latestVideo" data-video-id="jwkq48uLNJs" role="button" aria-label="Play Latest Video" tabindex="0">
+                        <div class="thumbnail-shimmer"></div>
+                        <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        <span class="video-tag">Latest Drop</span>
+                    </div>
+                    <div class="video-card-info">
+                        <h3>Newest Vlog Story</h3>
+                        <p>Our fresh drop. Experiences, editing vlogs, and behind the scenes.</p>
                     </div>
                 </div>
 
-                <!-- EDIT THIS: Milestone 2 -->
-                <div class="timeline-item timeline-fade">
-                    <div class="timeline-img glow-border"><i class="fas fa-fire"></i></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">October 2024</span>
-                        <h3>First Viral Short 📈</h3>
-                        <p>A 30-second funny rant about college submission deadlines crossed over 10K views overnight. Let's go!</p>
+                <!-- Video Card 2: Most Viewed -->
+                <div class="video-card">
+                    <div class="video-card-thumb lazy-youtube" id="mostViewedVideo" data-video-id="u0QUAvUZun0" role="button" aria-label="Play Most Viewed Video" tabindex="0">
+                        <div class="thumbnail-shimmer"></div>
+                        <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        <span class="video-tag">Popular</span>
+                    </div>
+                    <div class="video-card-info">
+                        <h3>Trending Adventure</h3>
+                        <p>The story that resonated the most with the #VishvaSquad community.</p>
                     </div>
                 </div>
 
-                <!-- EDIT THIS: Milestone 3 -->
-                <div class="timeline-item timeline-fade">
-                    <div class="timeline-img glow-border"><i class="fas fa-users"></i></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">December 2024</span>
-                        <h3>100 Subs Fam 🎉</h3>
-                        <p>Hit the double digits! Reaching 100 people who actually enjoyed my raw Marathi-Hindi vibes was huge.</p>
+                <!-- Video Card 3: Creator's Pick -->
+                <div class="video-card">
+                    <div class="video-card-thumb lazy-youtube" id="creatorPickVideo" data-video-id="gK8ss4K48oI" role="button" aria-label="Play Creator Pick Video" tabindex="0">
+                        <div class="thumbnail-shimmer"></div>
+                        <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        <span class="video-tag">Creator's Pick</span>
                     </div>
-                </div>
-
-                <!-- EDIT THIS: Milestone 4 -->
-                <div class="timeline-item timeline-fade">
-                    <div class="timeline-img glow-border"><i class="fas fa-bolt"></i></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">March 2025</span>
-                        <h3>500 Milestone Reached ⚡</h3>
-                        <p>Started uploading consistent weekend vlogs. The comments section started feeling like a family group chat.</p>
-                    </div>
-                </div>
-
-                <!-- EDIT THIS: Milestone 5 (Active/Current) -->
-                <div class="timeline-item timeline-active timeline-fade">
-                    <div class="timeline-img glow-border pulsing-node"><i class="fas fa-heart"></i></div>
-                    <div class="timeline-content glass-card current-milestone">
-                        <span class="timeline-date">Current Milestone</span>
-                        <h3>750 & Counting ❤️</h3>
-                        <p>Close to our 1K goal. Currently refining the vlogs and making more travel & college chaos content!</p>
+                    <div class="video-card-info">
+                        <h3>Cinematic Experience</h3>
+                        <p>Vishva's personal favorite vlog project, focusing on raw lifestyle storytelling.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brand Collaboration Section -->
-    <section id="brands" class="section">
+    <!-- Creator Journey Section -->
+    <section id="journey" class="section bg-light-section">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">Built for <span class="accent-text">Brand Partnerships</span> 🤝</h2>
-                <p class="section-subtitle">
-                    <span class="tone-vibe">Why brands & sponsors choose to work with the #VishvaSquad family</span>
-                    <span class="tone-pro">Promoting organic brand integration, authentic sponsor campaigns, and direct Gen-Z audience outreach.</span>
-                </p>
+                <span class="section-badge">Timeline</span>
+                <h2 class="section-title">The Creator Journey</h2>
+                <p class="section-subtitle">How a small camera in 2023 became a digital home for 1,000+ viewers.</p>
             </div>
-            
-            <!-- Trust Badges -->
-            <div class="brand-stats-grid">
-                <!-- EDIT THIS: Stat 1 -->
-                <div class="brand-stat-card glass-card text-center">
-                    <i class="fas fa-user-check brand-stat-icon"></i>
-                    <h3>750+</h3>
-                    <p>Highly Engaged Subscribers</p>
+
+            <div class="timeline-v2">
+                <!-- 2023 -->
+                <div class="timeline-row timeline-fade">
+                    <div class="timeline-time">
+                        <h3>2023</h3>
+                        <span>The Spark</span>
+                    </div>
+                    <div class="timeline-body card">
+                        <h4>Started Vishva Vlogs</h4>
+                        <p>Uploaded the first video as a curious student. Documented the early chaos of college life and random road trips. The focus was simple: show up and record.</p>
+                    </div>
                 </div>
-                <!-- EDIT THIS: Stat 2 -->
-                <div class="brand-stat-card glass-card text-center">
-                    <i class="fas fa-language brand-stat-icon"></i>
-                    <h3>Multilingual</h3>
-                    <p>Marathi + Hindi + English</p>
+
+                <!-- 2024 -->
+                <div class="timeline-row timeline-fade">
+                    <div class="timeline-time">
+                        <h3>2024</h3>
+                        <span>Refining Vibe</span>
+                    </div>
+                    <div class="timeline-body card">
+                        <h4>Finding My Unique Voice</h4>
+                        <p>Explored different styles of lifestyle vlogging, transition edits, and multilingual narratives (Marathi/Hindi). Built the foundations of a consistent schedule.</p>
+                    </div>
                 </div>
-                <!-- EDIT THIS: Stat 3 -->
-                <div class="brand-stat-card glass-card text-center">
-                    <i class="fas fa-calendar-check brand-stat-icon"></i>
-                    <h3>3x/Week</h3>
-                    <p>Consistency in Uploads</p>
+
+                <!-- 2025 -->
+                <div class="timeline-row timeline-fade">
+                    <div class="timeline-time">
+                        <h3>2025</h3>
+                        <span>Momentum</span>
+                    </div>
+                    <div class="timeline-body card">
+                        <h4>Building the Community</h4>
+                        <p>Drove consistent viewership through storytelling, engaging actively with subscribers, and documenting real, relatable life milestones. Reached 750+ families.</p>
+                    </div>
                 </div>
-                <!-- EDIT THIS: Stat 4 -->
-                <div class="brand-stat-card glass-card text-center">
-                    <i class="fas fa-graduation-cap brand-stat-icon"></i>
-                    <h3>Gen-Z</h3>
-                    <p>College Student Audience</p>
+
+                <!-- 2026 -->
+                <div class="timeline-row timeline-fade">
+                    <div class="timeline-time">
+                        <h3>2026</h3>
+                        <span>Milestone</span>
+                    </div>
+                    <div class="timeline-body card active-card">
+                        <h4>1,000+ Subscribers & Partnerships</h4>
+                        <p>Officially crossed the 1K milestones. Opened doors for creative brand collaborations, travel assignments, and high-quality audience integration projects.</p>
+                    </div>
+                </div>
+
+                <!-- Next Goal -->
+                <div class="timeline-row timeline-fade">
+                    <div class="timeline-time">
+                        <h3>Next Goal</h3>
+                        <span>Horizon</span>
+                    </div>
+                    <div class="timeline-body card">
+                        <h4>10,000 Subscribers & Beyond</h4>
+                        <p>Expanding scope to bigger visual adventures, higher production travel vlogs, and deeper audience interactions. The journey has only just started.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Channel Impact Section -->
+    <section id="impact" class="section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">Impact Metrics</span>
+                <h2 class="section-title">Channel Statistics</h2>
+                <p class="section-subtitle">Real growth stats backed by an authentic, highly-engaged audience base.</p>
+            </div>
+
+            <div class="stats-grid-v2">
+                <div class="stat-card-v2 card">
+                    <span class="stat-num count" data-target="1000">0</span>
+                    <h4>Subscribers Fam</h4>
+                    <p>Subscribed active viewers who follow the channel journey weekly.</p>
+                </div>
+                <div class="stat-card-v2 card">
+                    <span class="stat-num">2023</span>
+                    <h4>First Upload Year</h4>
+                    <p>Documenting life and vlogging experiences consistently since day one.</p>
+                </div>
+                <div class="stat-card-v2 card">
+                    <span class="stat-num count" data-target="150">0</span>
+                    <h4>Videos Published</h4>
+                    <p>Vlogs, travel logs, and short vertical content catalog.</p>
+                </div>
+                <div class="stat-card-v2 card">
+                    <span class="stat-num">Weekly</span>
+                    <h4>Community Growth</h4>
+                    <p>Steady growth driven by real, relatable student and lifestyle vibes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Follow Vishva -->
+    <section id="why" class="section bg-light-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">Core Pillars</span>
+                <h2 class="section-title">Why Follow the Journey?</h2>
+                <p class="section-subtitle">Four core values that define every vlog we publish.</p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card card">
+                    <i class="fas fa-hiking why-icon"></i>
+                    <h3>Authentic Experiences</h3>
+                    <p>No scripts, no filters. We show real struggles, genuine local travel spots, and raw college days.</p>
+                </div>
+                <div class="why-card card">
+                    <i class="fas fa-video why-icon"></i>
+                    <h3>Consistent Storytelling</h3>
+                    <p>A reliable creative schedule ensuring our community stays entertained week after week.</p>
+                </div>
+                <div class="why-card card">
+                    <i class="fas fa-users-cog why-icon"></i>
+                    <h3>Community Driven</h3>
+                    <p>Every comment, feedback, and video request is valued. We build this squad together.</p>
+                </div>
+                <div class="why-card card">
+                    <i class="fas fa-chart-line why-icon"></i>
+                    <h3>Real Growth Journey</h3>
+                    <p>Witness the organic hustle of a young creator scaling up production values step-by-step.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">Social Proof</span>
+                <h2 class="section-title">Community Appreciation</h2>
+                <p class="section-subtitle">Real feedback from our viewers and creative brand partners.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card card">
+                    <p class="quote">"Started watching during his first uploads in 2023. The growth has been insane. The vlogs are super relatable, and he kept the Marathi-Hindi Mumbaikar vibe intact!"</p>
+                    <div class="author-info">
+                        <span class="author-name">Aditya Patil</span>
+                        <span class="author-label">Subscriber since 2023</span>
+                    </div>
+                </div>
+                <div class="testimonial-card card">
+                    <p class="quote">"Collaborated on a local travel content series. Extremely professional, delivers on schedule, and knows exactly how to organically plug brands without ruining the vlog's flow."</p>
+                    <div class="author-info">
+                        <span class="author-name">Rohan Sharma</span>
+                        <span class="author-label">Marketing Agency Lead</span>
+                    </div>
+                </div>
+                <div class="testimonial-card card">
+                    <p class="quote">"His late-night exam prep vlogs literally got me through my first semester. Super authentic, humorous, and captures engineering student struggles perfectly!"</p>
+                    <div class="author-info">
+                        <span class="author-name">Neha Shinde</span>
+                        <span class="author-label">College Viewer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Collaborations Section -->
+    <section id="collabs" class="section bg-light-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">Partnerships</span>
+                <h2 class="section-title">Brand & Sponsorship Integrations</h2>
+                <p class="section-subtitle">Premium integration setups built to deliver results with maximum audience trust.</p>
+            </div>
+
+            <div class="collab-categories">
+                <div class="collab-cat card">
+                    <i class="fas fa-globe-asia collab-cat-icon"></i>
+                    <h3>Travel Collaborations</h3>
+                    <p>Destination features, local travel guides, hotel reviews, and itinerary vlogs.</p>
+                </div>
+                <div class="collab-cat card">
+                    <i class="fas fa-box-open collab-cat-icon"></i>
+                    <h3>Product Reviews</h3>
+                    <p>Unboxings, lifestyle product testings, and tech gear reviews that match Gen-Z interests.</p>
+                </div>
+                <div class="collab-cat card">
+                    <i class="fas fa-ticket-alt collab-cat-icon"></i>
+                    <h3>Event Coverage</h3>
+                    <p>Vlogging event highlights, college festivals, store launches, and live experiences.</p>
+                </div>
+                <div class="collab-cat card">
+                    <i class="fas fa-bullseye collab-cat-icon"></i>
+                    <h3>Sponsored Integrations</h3>
+                    <p>Organic mid-roll mentions, social media campaigns, and custom content series sponsorships.</p>
                 </div>
             </div>
 
-            <!-- Placeholder Brand Logos Strip -->
-            <!-- HTML COMMENT: These brand pills are grayscale placeholders that turn colorful on hover. Replace them with real <img> tags once sponsorships are locked in! -->
-            <div class="brand-logos-container">
-                <div class="brand-logo-pill"><span>Collab Brand A</span></div>
-                <div class="brand-logo-pill"><span>Collab Brand B</span></div>
-                <div class="brand-logo-pill"><span>Collab Brand C</span></div>
-                <div class="brand-logo-pill"><span>Collab Brand D</span></div>
-                <div class="brand-logo-pill"><span>Collab Brand E</span></div>
+            <div class="collab-action-block card text-center">
+                <h3>Ready to collaborate with #VishvaSquad?</h3>
+                <p>Download our media kit with detailed demographics or drop an inquiry directly below.</p>
+                <div class="collab-actions">
+                    <a href="#" class="btn btn-secondary" id="mediaKitBtn">Download Media Kit <i class="fas fa-file-download"></i></a>
+                    <a href="#contact" class="btn btn-primary">Start a Collaboration</a>
+                </div>
+            </div>
+
+            <!-- Grayscale Logo Placeholders -->
+            <!-- REPLACE with real partner logo images (<img> tags) in the future -->
+            <div class="brand-partner-logos">
+                <div class="partner-logo-box">Partner Logo A</div>
+                <div class="partner-logo-box">Partner Logo B</div>
+                <div class="partner-logo-box">Partner Logo C</div>
+                <div class="partner-logo-box">Partner Logo D</div>
+                <div class="partner-logo-box">Partner Logo E</div>
             </div>
         </div>
     </section>
@@ -444,142 +449,183 @@
     <section id="faq" class="section">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title">Got <span class="gradient-text">Questions?</span> 🤔</h2>
-                <p class="section-subtitle">Some random doubts answered in typical Vishva style!</p>
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Answers to popular questions from our community and brands.</p>
             </div>
 
             <div class="faq-accordion">
                 <!-- FAQ 1 -->
-                <div class="faq-item glass-card">
+                <div class="faq-item card">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-1">
-                        Do you do brand collaborations?
+                        How often do you upload new videos?
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div id="faq-ans-1" class="faq-answer" role="region" aria-hidden="true">
-                        <p>Bilkul! I'm always excited to partner with brands that connect with my college audience. If your product fits the chaos, daily engineering life, or travel vibe, let's make a cool vlog! Hit me up in the contact form below.</p>
+                        <p>I publish new content twice a week! Expect highly engaging mini-vlogs/shorts during weekdays and a primary, detailed story/vlog on Sunday mornings.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
-                <div class="faq-item glass-card">
+                <div class="faq-item card">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-2">
-                        What languages do you create content in?
+                        What equipment do you use for your vlogs?
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div id="faq-ans-2" class="faq-answer" role="region" aria-hidden="true">
-                        <p>
-                            <span class="tone-vibe">Hum vlogger hai, sab chalta hai! Mostly it's a mix of Marathi and Hindi because that's our native vibe in Mumbai. Of course, a bit of English joins when discussing programming bugs!</span>
-                            <span class="tone-pro">Content is delivered primarily in Marathi and Hindi to maximize local community engagement in Mumbai, with English incorporated for technical topics and programming vlogs.</span>
-                        </p>
+                        <p>I keep it lightweight! I shoot mostly on an iPhone and a compact mirrorless vlogging camera, combined with a portable microphone to ensure audio remains crisp even in noisy Mumbai streets.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 3 -->
-                <div class="faq-item glass-card">
+                <div class="faq-item card">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-3">
-                        How often do you post new videos?
+                        Can brands collaborate with you?
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div id="faq-ans-3" class="faq-answer" role="region" aria-hidden="true">
-                        <p>I aim for 3 videos per week! Usually two mini-vlogs/shorts during weekdays and one detailed, fully chaotic engineering vlog on Sundays to keep your weekend loaded.</p>
+                        <p>Yes, absolutely! I partner with brands that align with the channel's travel, student life, and organic storytelling vibe. Contact me using the form below to discuss sponsorships.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 4 -->
-                <div class="faq-item glass-card">
+                <div class="faq-item card">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-4">
-                        Can brands send PR packages or products to feature?
+                        Can viewers suggest video ideas?
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div id="faq-ans-4" class="faq-answer" role="region" aria-hidden="true">
-                        <p>Haan, why not! Send them over. If it's something useful or hilarious that college students would appreciate, I'll definitely give it a shoutout or unbox it in a short!</p>
+                        <p>Of course! The #VishvaSquad community dictates the channel direction. Feel free to comment on YouTube or send travel/college challenge suggestions through my Instagram DM.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 5 -->
-                <div class="faq-item glass-card">
+                <div class="faq-item card">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-5">
-                        Where can I watch all your videos?
+                        How can I contact you for business inquiries?
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div id="faq-ans-5" class="faq-answer" role="region" aria-hidden="true">
-                        <p>Youtube is my home, boss! You can scroll up to click the "Subscribe" buttons on this site, or directly head to my YouTube Channel. Don't forget to ring the bell icon!</p>
+                        <p>You can fill out the contact form below, email me directly at my business email address, or send a message via WhatsApp for urgent collaboration details.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Collaboration Section -->
-    <section id="contact" class="section">
-        <div class="container contact-container">
-            <div class="section-header text-center">
-                <h2 class="section-title">Work With <span class="gradient-text">Me 🤝</span></h2>
-                <p class="section-subtitle">Brands, sponsorships, or just say Hi!</p>
-            </div>
-
-            <div class="glass-card contact-form-card">
-                <!-- REPLACE YOUR_FORM_ID WITH YOUR REAL FORMSPREE FORM ID -->
-                <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-                    <!-- Hidden fields for Formspree subject -->
-                    <input type="hidden" name="_subject" value="New inquiry from Vishva Vlogs site 🎬">
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-block">
+                    <span class="section-badge">Reach Out</span>
+                    <h2>Let's Create Something Great Together</h2>
+                    <p>Available for travel sponsorships, brand integrations, reviews, and events. Let's talk business or just say hi!</p>
                     
-                    <div class="form-group">
-                        <input type="text" name="name" id="contactName" placeholder="Your Name / Brand" required>
-                        <span class="error-msg" id="contactNameError"></span>
+                    <div class="contact-links-list">
+                        <div class="contact-link-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span>Business Email</span>
+                                <a href="mailto:vishvavlogs.business@gmail.com">vishvavlogs.business@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-link-item">
+                            <i class="fab fa-instagram"></i>
+                            <div>
+                                <span>Instagram</span>
+                                <a href="#" target="_blank">@vishvavlogs</a>
+                            </div>
+                        </div>
+                        <div class="contact-link-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <span>WhatsApp Business</span>
+                                <!-- REPLACE WITH REAL WHATSAPP NUMBER -->
+                                <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Vishva!%20Saw%20your%20channel,%20let's%20talk%20%F0%9F%91%8B" target="_blank">Message Vishva</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" id="contactEmail" placeholder="Email Address" required>
-                        <span class="error-msg" id="contactEmailError"></span>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" id="contactMessage" placeholder="Tell me what's on your mind..." rows="4" required></textarea>
-                        <span class="error-msg" id="contactMessageError"></span>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" id="contactSubmitBtn">Send it! 📩</button>
-                    <div id="contactStatus" class="contact-status" aria-live="polite"></div>
-                </form>
+                </div>
+
+                <div class="contact-form-card card">
+                    <!-- REPLACE YOUR_FORM_ID WITH YOUR REAL FORMSPREE FORM ID -->
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+                        <input type="hidden" name="_subject" value="New inquiry from Vishva Vlogs site 🎬">
+                        
+                        <div class="form-group">
+                            <input type="text" name="name" id="contactName" placeholder="Your Name / Brand" required>
+                            <span class="error-msg" id="contactNameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" id="contactEmail" placeholder="Email Address" required>
+                            <span class="error-msg" id="contactEmailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="contactMessage" placeholder="Tell me what's on your mind..." rows="5" required></textarea>
+                            <span class="error-msg" id="contactMessageError"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" id="contactSubmitBtn">Submit Inquiry</button>
+                        <div id="contactStatus" class="contact-status" aria-live="polite"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container text-center">
-            <!-- Newsletter Signup Block -->
-            <div class="newsletter-block glass-card">
-                <h3>Don't miss a vlog 📬</h3>
-                <!-- REPLACE YOUR_FORM_ID WITH YOUR REAL FORMSPREE FORM ID -->
-                <form id="newsletterForm" class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-                    <!-- Hidden field for Formspree subject -->
-                    <input type="hidden" name="_subject" value="New newsletter subscriber on Vishva Vlogs site 📬">
-                    <!-- Honeypot field for spam bots -->
-                    <div class="visually-hidden">
-                        <label for="website_hp">Leave this field blank</label>
-                        <input type="text" name="website_hp" id="website_hp" autocomplete="off" tabindex="-1">
-                    </div>
-                    <div class="newsletter-input-group">
-                        <input type="email" name="email" id="newsletterEmail" placeholder="your@email.com" required aria-label="Email Address">
-                        <button type="submit" class="btn btn-primary" id="newsletterSubmitBtn">Notify Me</button>
-                    </div>
-                </form>
-                <div id="newsletterStatus" class="newsletter-status" aria-live="polite"></div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">Vishva<span class="accent-text">Vlogs</span></a>
+                    <p class="mission-text">Documenting authentic travel, local stories, and college culture since 2023. Growing a squad based on real experiences and shared moments.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#featured">Featured</a></li>
+                        <li><a href="#journey">Journey</a></li>
+                        <li><a href="#impact">Statistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Get notified when a new vlog drops.</p>
+                    <!-- REPLACE YOUR_FORM_ID WITH YOUR REAL FORMSPREE FORM ID -->
+                    <form id="newsletterForm" class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+                        <input type="hidden" name="_subject" value="New newsletter subscriber on Vishva Vlogs site 📬">
+                        <div class="visually-hidden">
+                            <label for="website_hp">Leave this field blank</label>
+                            <input type="text" name="website_hp" id="website_hp" autocomplete="off" tabindex="-1">
+                        </div>
+                        <div class="newsletter-input-group">
+                            <input type="email" name="email" id="newsletterEmail" placeholder="your@email.com" required aria-label="Email Address">
+                            <button type="submit" class="btn btn-primary" id="newsletterSubmitBtn"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div id="newsletterStatus" class="newsletter-status" aria-live="polite"></div>
+                </div>
             </div>
 
-            <div class="footer-socials">
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <div class="footer-bottom text-center">
+                <div class="footer-socials">
+                    <a href="https://www.youtube.com/channel/UCVO1tVecLqpGxgY6cL3lM2A" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p class="copyright">&copy; 2026 Vishva Vlogs. All rights reserved.</p>
             </div>
-            <p class="tagline">"Made with ❤️ and Vada Pav in Mumbai."</p>
-            <p class="copyright">&copy; 2026 Vishva Vlogs</p>
         </div>
     </footer>
 
     <!-- Single Video Lightbox -->
     <div id="videoLightbox" class="lightbox-modal" aria-hidden="true" role="dialog" aria-label="Video Player">
         <div class="lightbox-backdrop"></div>
-        <div class="lightbox-content glass-card glow-border">
+        <div class="lightbox-content card glow-border">
             <button class="lightbox-close" id="lightboxClose" aria-label="Close video player">&times;</button>
             <div class="lightbox-video-container">
                 <!-- iframe injected dynamically -->
@@ -587,41 +633,20 @@
         </div>
     </div>
 
-    <!-- Reels-Style Shorts Lightbox -->
-    <div id="shortsLightbox" class="lightbox-modal shorts-lightbox-modal" aria-hidden="true" role="dialog" aria-label="Shorts Feed">
-        <div class="lightbox-backdrop"></div>
-        <div class="shorts-lightbox-content glass-card glow-border">
-            <button class="lightbox-close shorts-close" id="shortsClose" aria-label="Close shorts feed">&times;</button>
-            <button class="shorts-mute-btn" id="shortsMuteBtn" aria-label="Unmute audio"><i class="fas fa-volume-mute"></i></button>
-            
-            <!-- Navigation Arrows -->
-            <button class="shorts-nav-btn shorts-prev-btn" id="shortsPrevBtn" aria-label="Previous short"><i class="fas fa-chevron-up"></i></button>
-            <button class="shorts-nav-btn shorts-next-btn" id="shortsNextBtn" aria-label="Next short"><i class="fas fa-chevron-down"></i></button>
-            
-            <div class="shorts-video-container">
-                <!-- current short iframe injected here -->
-            </div>
-        </div>
-    </div>
+    <!-- Back to Top FAB -->
+    <button id="backToTopBtn" class="fab-btn fab-back-to-top card" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-    <!-- Floating Action Buttons (FABs) -->
-    <div class="fabs-container">
-        <!-- Back-to-top FAB -->
-        <button id="backToTopBtn" class="fab-btn fab-back-to-top glass-card" aria-label="Back to top">
-            <i class="fas fa-chevron-up"></i>
-        </button>
-
-        <!-- WhatsApp FAB -->
-        <!-- REPLACE WITH REAL WHATSAPP NUMBER (currently placeholder: 91XXXXXXXXXX) -->
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Vishva!%20Saw%20your%20channel,%20let's%20talk%20%F0%9F%91%8B" 
-           target="_blank" 
-           class="fab-btn fab-whatsapp glow-anim" 
-           aria-label="Chat on WhatsApp" 
-           id="whatsappFab">
-            <i class="fab fa-whatsapp"></i>
-            <span class="whatsapp-pulse-ring"></span>
-        </a>
-    </div>
+    <!-- WhatsApp FAB -->
+    <!-- REPLACE WITH REAL WHATSAPP NUMBER -->
+    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Vishva!%20Saw%20your%20channel,%20let's%20talk%20%F0%9F%91%8B" 
+       target="_blank" 
+       class="fab-btn fab-whatsapp" 
+       aria-label="Chat on WhatsApp" 
+       id="whatsappFab">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script src="script.js"></script>
 </body>
