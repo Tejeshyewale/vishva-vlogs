@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const animateStats = () => {
         stats.forEach(counter => {
             const target = +counter.getAttribute('data-target');
-            const speed = 120; // Animation speed
+            const speed = 120; 
             const increment = target / speed;
 
             const updateCount = () => {
@@ -114,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const entries = data.items;
             if (entries.length === 0) return;
 
-            // Extract ID from URL helper
             const getYoutubeId = (url) => {
                 const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
                 const match = url.match(regExp);
@@ -136,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setVideoIdAndThumb('latestVideo', latestVideoId);
             }
 
-            // 2. Update second and third videos if they exist in feed
+            // 2. Update second and third videos
             if (entries[1]) {
                 const secondId = getYoutubeId(entries[1].link);
                 if (secondId) setVideoIdAndThumb('mostViewedVideo', secondId);
@@ -236,19 +235,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeVideoLightbox = () => {
         if (!videoLightbox || !lightboxVideoContainer) return;
         
-        // Destroy Iframe
         lightboxVideoContainer.innerHTML = '';
         videoLightbox.classList.remove('active');
         videoLightbox.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('modal-open');
 
-        // Return focus
         if (videoTriggerElement) {
             videoTriggerElement.focus();
         }
     };
 
-    // Attach Lightbox triggers to all featured video cards & Play button in hero
+    // Attach Lightbox triggers to all video cards & play button
     document.querySelectorAll('.lazy-youtube').forEach(btn => {
         btn.addEventListener('click', () => {
             const videoId = btn.getAttribute('data-video-id');
@@ -291,7 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const answer = faqItem.querySelector('.faq-answer');
             const isActive = faqItem.classList.contains('active');
 
-            // Close all other accordion items
             document.querySelectorAll('.faq-item').forEach(item => {
                 if (item !== faqItem) {
                     item.classList.remove('active');
@@ -301,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Toggle active state on current item
             if (isActive) {
                 faqItem.classList.remove('active');
                 answer.style.maxHeight = null;
@@ -345,14 +340,12 @@ document.addEventListener('DOMContentLoaded', () => {
         newsletterForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Honeypot spam bot check
             const hpValue = newsletterForm.querySelector('input[name="website_hp"]').value;
             if (hpValue) {
                 console.warn("Spam detection triggered.");
                 return;
             }
 
-            // Input email validation
             const emailValue = newsletterEmail.value.trim();
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -362,7 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Disable button and add loading state
             newsletterSubmitBtn.classList.add('loading');
             newsletterSubmitBtn.disabled = true;
 
@@ -403,14 +395,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const contactName = document.getElementById('contactName');
     const contactEmail = document.getElementById('contactEmail');
+    const contactCategory = document.getElementById('contactCategory');
     const contactMessage = document.getElementById('contactMessage');
     const contactSubmitBtn = document.getElementById('contactSubmitBtn');
     const contactStatus = document.getElementById('contactStatus');
 
-    if (contactForm && contactName && contactEmail && contactMessage && contactSubmitBtn && contactStatus) {
-        const inputs = [contactName, contactEmail, contactMessage];
+    if (contactForm && contactName && contactEmail && contactCategory && contactMessage && contactSubmitBtn && contactStatus) {
+        const inputs = [contactName, contactEmail, contactCategory, contactMessage];
+        
         inputs.forEach(input => {
-            input.addEventListener('input', () => {
+            const eventName = input.tagName === 'SELECT' ? 'change' : 'input';
+            input.addEventListener(eventName, () => {
                 input.classList.remove('error');
                 const errSpan = document.getElementById(`${input.id}Error`);
                 if (errSpan) {
@@ -424,7 +419,6 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             let hasErrors = false;
 
-            // Reset previous validation styles
             inputs.forEach(input => {
                 input.classList.remove('error');
                 const errSpan = document.getElementById(`${input.id}Error`);
@@ -468,7 +462,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 hasErrors = true;
             }
 
-            // 3. Message Validation
+            // 3. Category Validation
+            if (!contactCategory.value) {
+                contactCategory.classList.add('error');
+                const errSpan = document.getElementById('contactCategoryError');
+                if (errSpan) {
+                    errSpan.innerText = 'Please select a category.';
+                    errSpan.classList.add('visible');
+                }
+                hasErrors = true;
+            }
+
+            // 4. Message Validation
             if (contactMessage.value.trim() === '') {
                 contactMessage.classList.add('error');
                 const errSpan = document.getElementById('contactMessageError');
@@ -505,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error(error);
                 contactStatus.className = 'contact-status error';
-                contactStatus.innerText = 'Something went wrong, try again or DM me on Instagram';
+                contactStatus.innerText = 'Something went wrong, try again or contact me on WhatsApp';
             } finally {
                 contactSubmitBtn.classList.remove('loading');
                 contactSubmitBtn.disabled = false;
